@@ -242,16 +242,16 @@ const Details = () => {
          <div className='text-2xl text-red-500 font-bold flex gap-3'>
             {
                 product.discount !== 0 ? <>
-                Price : <h2 className='line-through'>${product.price}</h2>
-                <h2>${product.price - Math.floor((product.price * product.discount) / 100)} (-{product.discount}%) </h2>
+                Price : <h2 className='line-through'>₦{product.price}</h2>
+                <h2>₦{product.price - Math.floor((product.price * product.discount) / 100)} (-{product.discount}%) </h2>
                 
-                </> : <h2> Price : ${product.price} </h2>
+                </> : <h2> Price : ₦{product.price} </h2>
             }
           </div> 
 
           <div className='text-slate-600'>
             <p>{product.description}  </p>
-            <p className='text-slate-600 py-1 font-bold'>Shop Name : {product.shopName}</p>
+            <p className='text-slate-600 py-1 font-bold'>Atelier Name : {product.shopName}</p>
            </div> 
 
             <div className='flex gap-3 pb-10 border-b'>
@@ -311,7 +311,7 @@ const Details = () => {
                     product.stock ? <button onClick={buynow} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white'>Buy Now</button> : ''
                 }
                 <Link to={`/dashboard/chat/${product.sellerId}`} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white'>
-                    Chat Seller
+                    Chat Designer
                 </Link>
             </div>
 
@@ -363,7 +363,7 @@ const Details = () => {
 
             <h2 className='text-slate-600 py-1 font-bold'>{p.name} </h2>
             <div className='flex gap-2'>
-                <h2 className='text-lg font-bold text-slate-600'>${p.price}</h2>
+                <h2 className='text-lg font-bold text-slate-600'>₦{p.price}</h2>
                 <div className='flex items-center gap-2'>
                     <Rating ratings={p.rating}  />
                 </div>
@@ -428,7 +428,7 @@ const Details = () => {
             <div className='p-4 flex flex-col gap-1'>
             <h2 className='text-slate-600 text-lg font-bold'>{p.name} </h2>
             <div className='flex justify-start items-center gap-3'>
-                <h2 className='text-lg font-bold text-slate-600'>${p.price}</h2>
+                <h2 className='text-lg font-bold text-slate-600'>₦{p.price}</h2>
                 <div className='flex'>
                     <Rating ratings={p.rating}  />
                 </div>

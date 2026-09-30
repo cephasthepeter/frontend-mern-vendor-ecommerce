@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js'
-import error from '../assets/error.png'
-import success from '../assets/success.png'
+import { loadStripe } from '@stripe/stripe-js';
+import error from '../assets/error.png';
+import success from '../assets/success.png';
 import { Link } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 import axios from 'axios';
 
 const load = async () => {
-    return await loadStripe('pk_test_51Oml5cGAwoXiNtjJgPPyQngDj9WTjawya4zCsqTn3LPFhl4VvLZZJIh9fW9wqVweFYC5f0YEb9zjUqRpXbkEKT7T00eU1xQvjp')
-}
+    const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
+    if (!stripePublicKey) {
+        console.warn('Stripe public key is missing. Confirmation flow is disabled.');
+        return null;
+    }
+    return await loadStripe(stripePublicKey);
+};
 
 const ConfirmOrder = () => {
 
@@ -18,57 +23,58 @@ const ConfirmOrder = () => {
 
     useEffect(() => {
         if (!stripe) {
-            return
+            return;
         }
-        const clientSecret = new URLSearchParams(window.location.search).get('payment_intent_client_secret')
-        if (!clientSecret) {
-            return
-        }
-        stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-            switch(paymentIntent.status){
-                case "succeeded":
-                    setMessage('succeeded')
-                    break
-                    case "processing":
-                    setMessage('processing')
-                    break
-                    case "requires_payment_method":
-                    setMessage('failed')
-                    break
-                    default:
-                    setMessage('failed')
 
+        const clientSecret = new URLSearchParams(window.location.search).get('payment_intent_client_secret');
+        if (!clientSecret) {
+            return;
+        }
+
+        stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+            switch (paymentIntent.status) {
+                case 'succeeded':
+                    setMessage('succeeded');
+                    break;
+                case 'processing':
+                    setMessage('processing');
+                    break;
+                case 'requires_payment_method':
+                    setMessage('failed');
+                    break;
+                default:
+                    setMessage('failed');
             }
-        })
-    },[stripe])
+        });
+    }, [stripe]);
 
     const get_load = async () => {
-        const tempStripe = await load()
-        setStripe(tempStripe)
-    }
+        const tempStripe = await load();
+        setStripe(tempStripe);
+    };
     
     useEffect(() => {
-        get_load()
-    },[])
+        get_load();
+    }, []);
 
     const update_payment = async () => {
-        const orderId = localStorage.getItem('orderId')
+        const orderId = localStorage.getItem('orderId');
         if (orderId) {
             try {
-                await axios.get(`http://localhost:5000/api/order/confirm/${orderId}`)
-                localStorage.removeItem('orderId')
-                setLoader(false)
+                await axios.get(`http://localhost:5000/api/order/confirm/${orderId}`);
+                localStorage.removeItem('orderId');
+                setLoader(false);
             } catch (error) {
-                console.log(error.response.data)
+                console.log(error.response?.data || error.message);
             }
         }
-    }
+    };
 
     useEffect(() => {
         if (message === 'succeeded') {
-            update_payment()
+            update_payment();
         }
-    },[message])
+    }, [message]);
 
 
     return (

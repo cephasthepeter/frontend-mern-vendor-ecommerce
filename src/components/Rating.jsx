@@ -4,7 +4,7 @@ import { CiStar } from 'react-icons/ci';
 
 const Rating = ({ratings}) => {
     return (
-        <>
+        <div className='flex items-center gap-1'>
         {
             ratings >= 1 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
             ratings >= .5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
@@ -25,8 +25,7 @@ const Rating = ({ratings}) => {
             ratings >= 5 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
             ratings >= 4.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
         }
-            
-        </>
+        </div>
     );
 };
 

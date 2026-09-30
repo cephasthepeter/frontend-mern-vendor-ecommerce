@@ -13,17 +13,21 @@ import toast from 'react-hot-toast';
 const Reviews = ({product}) => {
 
     const dispatch = useDispatch()
-    const [parPage, setParPage] = useState(10)
+    const [parPage] = useState(10)
     const [pageNumber, setPageNumber] = useState(1)
     
     const {userInfo } = useSelector(state => state.auth)
     const {successMessage,reviews,rating_review,totalReview } = useSelector(state => state.home)
 
-    const [rat, setRat] = useState('')
+    const [rat, setRat] = useState(0)
     const [re, setRe] = useState('')
 
     const review_submit = (e) => {
         e.preventDefault()
+        if (!rat) {
+            toast.error('Please select a rating before submitting your review.')
+            return
+        }
         const obj = {
             name: userInfo.name,
             review: re,
@@ -42,11 +46,11 @@ const Reviews = ({product}) => {
                 pageNumber
             }))
             dispatch(product_details(product.slug))
-            setRat('')
+            setRat(0)
             setRe('')
             dispatch(messageClear())
         }  
-    },[successMessage])
+    }, [dispatch, pageNumber, product._id, product.slug, successMessage])
 
     useEffect(() => {
         if (product._id) {
@@ -55,7 +59,7 @@ const Reviews = ({product}) => {
                 pageNumber
             }))
         }
-    },[pageNumber,product])
+    }, [dispatch, pageNumber, product._id])
 
 
     return (
@@ -170,7 +174,8 @@ const Reviews = ({product}) => {
             userInfo ? <div className='flex flex-col gap-3'>
                 <div className='flex gap-1'>
                     <RatingReact 
-                    onChange={(e) => setRat(e)}
+                    value={rat}
+                    onChange={(value) => setRat(value)}
                     initialRating={rat}
                     emptySymbol={<span className='text-slate-600 text-4xl'><CiStar/></span>}
                     fullSymbol={<span className='text-[#Edbb0E] text-4xl'><FaStar/></span>} 

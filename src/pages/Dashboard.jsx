@@ -67,6 +67,10 @@ const Dashboard = () => {
             <Link to='/dashboard/chat' className='block' >Chat  </Link>
                 </li>
                 <li className='flex justify-start items-center gap-2 py-2'>
+            <span className='text-xl'><IoChatbubbleEllipsesSharp/></span>
+            <Link to='/dashboard/support' className='block' >Contact Support</Link>
+                </li>
+                <li className='flex justify-start items-center gap-2 py-2'>
             <span className='text-xl'><RiLockPasswordLine/></span>
             <Link to='/dashboard/change-password' className='block' >Change Password  </Link>
                 </li>

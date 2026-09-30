@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -23,12 +22,16 @@ import Wishlist from './components/dashboard/Wishlist';
 import OrderDetails from './components/dashboard/OrderDetails';
 import Chat from './components/dashboard/Chat';
 import ConfirmOrder from './pages/ConfirmOrder';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import SupportChat from './components/dashboard/SupportChat';
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(get_category()) 
-},[])
+    dispatch(get_category())
+  }, [dispatch])
 
 
   return (
@@ -45,6 +48,9 @@ function App() {
       <Route path='/products/search?' element={<SearchProducts/>} />
       <Route path='/product/details/:slug' element={<Details/>} /> 
       <Route path='/order/confirm?' element={<ConfirmOrder/>} /> 
+      <Route path='/about' element={<About/>} />
+      <Route path='/contact' element={<Contact/>} />
+      <Route path='/blog' element={<Blog/>} />
 
       <Route path='/dashboard' element={<ProtectUser/>} >
       <Route path='' element={<Dashboard/>} >        
@@ -55,6 +61,7 @@ function App() {
       <Route path='order/details/:orderId' element={<OrderDetails/>} /> 
       <Route path='chat' element={<Chat/>} /> 
       <Route path='chat/:sellerId' element={<Chat/>} /> 
+      <Route path='support' element={<SupportChat/>} />
        
        </Route> 
       </Route>
