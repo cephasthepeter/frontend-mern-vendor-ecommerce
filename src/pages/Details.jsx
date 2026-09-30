@@ -171,7 +171,7 @@ const Details = () => {
         <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
             <div className='flex flex-col justify-center gap-1 items-center h-full w-full text-white'>
         <h2 className='text-3xl font-bold'>Product Details </h2>
-        <div className='flex justify-center items-center gap-2 text-2xl w-full'>
+                <div className='flex flex-wrap justify-center items-center gap-2 text-base sm:text-sm w-full'>
                 <Link to='/'>Home</Link>
                 <span className='pt-1'>
                 <IoIosArrowForward />
@@ -186,7 +186,7 @@ const Details = () => {
     <section>
         <div className='bg-slate-100 py-5 mb-5'>
             <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
-                <div className='flex justify-start items-center text-md text-slate-600 w-full'>
+                <div className='flex min-w-0 flex-wrap items-center gap-1 break-words text-sm text-slate-600 w-full'>
                     <Link to='/'>Home</Link>
                     <span className='pt-1'><IoIosArrowForward /></span>
                     <Link to='/'>{ product.category }</Link>
@@ -202,8 +202,8 @@ const Details = () => {
         <div className='w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto pb-16'>
             <div className='grid grid-cols-2 md-lg:grid-cols-1 gap-8'>
                 <div>
-                <div className='p-5 border'>
-                    <img className='h-[400px] w-full' src={image ? image : product.images?.[0] } alt="" />
+                <div className='flex h-[min(80vw,400px)] min-h-[220px] max-h-[400px] items-center justify-center overflow-hidden border bg-white p-3 sm:p-2'>
+                    <img className='h-full w-full object-contain' src={image ? image : product.images?.[0] } alt={product.name || 'Product'} />
                 </div>
             <div className='py-3'>
                 {
@@ -229,7 +229,7 @@ const Details = () => {
            </div>
 
         <div className='flex flex-col gap-5'>
-                <div className='text-3xl text-slate-600 font-bold'>
+                <div className='break-words text-3xl sm:text-2xl text-slate-600 font-bold'>
                     <h3>{product.name} </h3>
                 </div>
                 <div className='flex justify-start items-center gap-4'>
@@ -239,7 +239,7 @@ const Details = () => {
                     <span className='text-green-500'>(24 reviews)</span> 
                 </div>
 
-         <div className='text-2xl text-red-500 font-bold flex gap-3'>
+         <div className='flex flex-wrap items-center gap-x-3 gap-y-1 text-2xl sm:text-xl text-red-500 font-bold'>
             {
                 product.discount !== 0 ? <>
                 Price : <h2 className='line-through'>₦{product.price}</h2>
@@ -254,7 +254,7 @@ const Details = () => {
             <p className='text-slate-600 py-1 font-bold'>Atelier Name : {product.shopName}</p>
            </div> 
 
-            <div className='flex gap-3 pb-10 border-b'>
+            <div className='flex flex-wrap items-center gap-3 pb-10 border-b'>
                 {
                     product.stock ? <>
         <div className='flex bg-slate-200 h-[50px] justify-center items-center text-xl'>
@@ -263,7 +263,7 @@ const Details = () => {
             <div onClick={inc} className='px-6 cursor-pointer'>+</div>
         </div>
                     <div>
-                        <button onClick={add_card} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#059473] text-white'>Add To Card</button>
+                        <button onClick={add_card} className='px-5 sm:px-3 py-3 min-h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#059473] text-white'>Add To Card</button>
                     </div>
                     
                     </> : ''
@@ -306,11 +306,11 @@ const Details = () => {
             </div>
           </div>
 
-          <div className='flex gap-3'>
+          <div className='flex flex-wrap gap-3'>
                 {
-                    product.stock ? <button onClick={buynow} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white'>Buy Now</button> : ''
+                    product.stock ? <button onClick={buynow} className='px-6 sm:px-3 py-3 min-h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white'>Buy Now</button> : ''
                 }
-                <Link to={`/dashboard/chat/${product.sellerId}`} className='px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white'>
+                <Link to={`/dashboard/chat/${product.sellerId}`} className='px-6 sm:px-3 py-3 min-h-[50px] cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white'>
                     Chat Designer
                 </Link>
             </div>

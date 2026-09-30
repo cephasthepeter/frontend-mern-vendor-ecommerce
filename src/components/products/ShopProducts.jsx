@@ -11,12 +11,12 @@ const ShopProducts = ({styles,products}) => {
     const dispatch = useDispatch();
     const { userInfo } = useSelector(state => state.auth);
     return (
-        <div className={`w-full grid ${styles === 'grid' ? 'grid-cols-3 md-lg:grid-cols-2 md:grid-cols-2' : 'grid-cols-1 md-lg:grid-cols-2 md:grid-cols-2'} gap-3 `}>
+        <div className={`w-full min-w-0 grid ${styles === 'grid' ? 'grid-cols-3 md-lg:grid-cols-2 sm:grid-cols-1' : 'grid-cols-1'} gap-3`}>
             {
                 products.map((p, i)=> <div key={i} className={`premium-card flex transition-all duration-1000 ${styles === 'grid' ? 'flex-col justify-start items-start' : 'justify-start items-center md-lg:flex-col md-lg:justify-start md-lg:items-start'} w-full gap-4 p-2 rounded-[20px]`}>
 
-        <div className={styles === 'grid' ? 'w-full relative group h-[210px] md:h-[270px] xs:h-[170px] overflow-hidden rounded-[16px]' : 'md-lg:w-full relative group h-[210px] md:h-[270px] overflow-hidden rounded-[16px]'}>
-            <img className='h-[240px] rounded-md md:h-[270px] xs:h-[170px] w-full object-cover' src={ p.images[0] } alt="" />
+        <div className={styles === 'grid' ? 'w-full relative group h-[210px] md:h-[270px] sm:h-[190px] xs:h-[170px] overflow-hidden rounded-[16px]' : 'md-lg:w-full relative group h-[210px] md:h-[270px] sm:h-[190px] overflow-hidden rounded-[16px]'}>
+            <img className='h-full w-full rounded-md object-cover' src={ p.images[0] } alt={p.name} />
 
           <ul className='flex transition-all duration-700 -bottom-10 justify-center items-center gap-2 absolute w-full group-hover:bottom-3'>
             <li onClick={() => dispatch(add_to_wishlist({
@@ -50,8 +50,8 @@ const ShopProducts = ({styles,products}) => {
         </ul>    
      </div>
 
-     <div className='flex justify-start items-start flex-col gap-1'>
-            <h2 className='font-bold'>{ p.name }</h2>
+         <div className='flex min-w-0 justify-start items-start flex-col gap-1'>
+             <h2 className='break-words font-bold'>{ p.name }</h2>
             <div className='flex justify-start items-center gap-3'>
                 <span className='text-md font-semibold'>₦{ p.price }</span>
                 <div className='flex'>

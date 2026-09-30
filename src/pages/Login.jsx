@@ -55,10 +55,10 @@ const Login = () => {
                 </div>
             }
             <Header/>
-            <div className='login-page min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-2 py-4'>
-                <div className='w-full max-w-lg mx-auto login-shell'>
-                    <div className='grid grid-cols-1 lg:grid-cols-[30%_70%] overflow-hidden rounded-[24px] border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,23,42,0.45)]'>
-                        <div className='px-4 py-5 sm:px-5 lg:px-5 lg:py-6 login-form'>
+            <div className='login-page min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-3 py-8'>
+                <div className='w-full max-w-5xl mx-auto login-shell'>
+                    <div className='auth-layout overflow-hidden rounded-[24px] border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,23,42,0.45)]'>
+                        <div className='px-4 py-5 sm:px-5 lg:px-5 lg:py-6 auth-form login-form'>
                             <div className='login-card bg-slate-900/20 border border-white/10 rounded-2xl p-4 backdrop-blur-md'>
                                 <h2 className='text-center w-full text-2xl text-white font-bold mb-5'>Login</h2>
 
@@ -98,7 +98,7 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <div className='relative min-h-[320px] w-full'>
+                        <div className='auth-visual relative min-h-[320px] w-full'>
                             <img src="http://localhost:3000/images/login.jpg" alt="" className='h-full w-full object-cover grayscale-[0.15]' />
                             <div className='absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent'></div>
                             <div className='absolute inset-x-0 bottom-0 p-5 text-white'>

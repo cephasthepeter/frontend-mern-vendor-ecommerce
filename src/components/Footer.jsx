@@ -9,9 +9,9 @@ const Footer = () => {
     return (
         <footer className='bg-slate-900 text-white'>
             {/* Main Footer */}
-            <div className='w-[85%] flex flex-wrap mx-auto border-b border-slate-700 py-16 md-lg:pb-10 sm:pb-6'>
+            <div className='footer-main w-[90%] max-w-[1240px] mx-auto grid grid-cols-4 gap-x-10 gap-y-10 border-b border-slate-700 py-16 md-lg:py-10 sm:py-8'>
                 {/* Brand Info */}
-                <div className='w-3/12 lg:w-4/12 sm:w-full'>
+                <div className='footer-brand min-w-0'>
                     <div className='flex flex-col gap-4'>
                         <div className='text-2xl font-bold'>
                             Mamiglo <span className='text-amber-500'>EXCLUSIVE</span>
@@ -28,8 +28,8 @@ const Footer = () => {
                 </div>
 
                 {/* Links Sections */}
-                <div className='w-9/12 lg:w-full'>
-                    <div className='flex justify-between sm:justify-start sm:flex-wrap w-full gap-12 lg:gap-6'>
+                <div className='footer-links col-span-3 min-w-0'>
+                    <div className='footer-columns grid grid-cols-4 gap-x-8 gap-y-10'>
                         {/* Shop */}
                         <div>
                             <h3 className='font-bold text-lg mb-4 text-amber-500'>Shop</h3>
@@ -89,8 +89,8 @@ const Footer = () => {
             </div>
 
             {/* Social & Bottom */}
-            <div className='w-[85%] mx-auto py-8 flex flex-wrap justify-between items-center gap-4'>
-                <div className='flex items-center gap-4'>
+            <div className='w-[90%] max-w-[1240px] mx-auto py-8 flex flex-wrap justify-between items-center gap-4 sm:flex-col sm:items-start'>
+                <div className='flex flex-wrap items-center gap-3'>
                     <span className='text-slate-400 text-sm'>Follow us:</span>
                     <a 
                         href="https://facebook.com" 
@@ -126,7 +126,7 @@ const Footer = () => {
                     </a>
                 </div>
 
-                <p className='text-slate-400 text-sm text-center flex-1'>
+                <p className='text-slate-400 text-sm text-center flex-1 sm:text-left'>
                     &copy; {currentYear} MamigloExclusive. All rights reserved. | Designed for the modern Nigerian man.
                 </p>
             </div>

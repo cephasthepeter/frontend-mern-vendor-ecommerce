@@ -252,7 +252,7 @@ const Shipping = () => {
             <div className='w-[33%] md-lg:w-full'>
     <div className='pl-3 md-lg:pl-0 md-lg:mt-5'>
         
-            <div className='bg-white p-4 text-slate-600 flex flex-col gap-4 rounded-md shadow-sm sticky top-20'>
+            <div className='bg-white p-4 text-slate-600 flex flex-col gap-4 rounded-md shadow-sm sticky top-20 md-lg:static'>
                 <h2 className='text-xl font-bold text-slate-800'>Order Summary</h2>
                 
                 <div className='border-t border-slate-200 pt-4'>

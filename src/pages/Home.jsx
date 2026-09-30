@@ -144,7 +144,7 @@ const Home = () => {
                         <p className='text-xl md-lg:text-lg text-slate-300 mb-8'>
                             Premium men's accessories designed to complete every look. From boardroom to celebration, we have you covered.
                         </p>
-                        <div className='flex gap-4'>
+                        <div className='flex flex-wrap gap-3 sm:gap-2'>
                             <Link
                                 to='/products'
                                 className='px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all duration-300 inline-block shadow-[0_20px_35px_rgba(245,158,11,0.35)]'

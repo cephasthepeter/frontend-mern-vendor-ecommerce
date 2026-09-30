@@ -33,7 +33,7 @@ const Orders = () => {
 
     return (
         <div className='bg-white p-4 rounded-md'>
-            <div className='flex justify-between items-center'>
+            <div className='flex flex-wrap justify-between items-center gap-3'>
                 <h2 className='text-xl font-semibold text-slate-600'>My Orders </h2>
                 <select className='outline-none px-3 py-1 border rounded-md text-slate-600' value={state} onChange={(e) => setState(e.target.value)} >
                     <option value="all">--ordre status--</option>

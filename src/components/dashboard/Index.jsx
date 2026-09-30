@@ -33,7 +33,7 @@ const Index = () => {
 
     return (
 <div>
-    <div className='grid grid-cols-3 md:grid-cols-1 gap-5'>
+    <div className='grid grid-cols-3 md-lg:grid-cols-2 sm:grid-cols-1 gap-5'>
        
         <div className='flex justify-center items-center p-5 bg-white rounded-md gap-5'>
             <div className='bg-green-100 w-[47px] h-[47px] rounded-full flex justify-center items-center text-xl'>

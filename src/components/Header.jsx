@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { MdEmail } from "react-icons/md";
 import { IoMdPhonePortrait } from "react-icons/io";
-import { FaFacebookF, FaList, FaLock, FaUser } from "react-icons/fa";
+import { FaFacebookF, FaList, FaLock, FaTimes, FaUser } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
-import { IoIosArrowDown } from "react-icons/io"; 
 import { useDispatch, useSelector } from 'react-redux';
 import { get_card_products, get_wishlist_products } from '../store/reducers/cardReducer';
 
@@ -24,9 +22,6 @@ const Header = () => {
     const {pathname} = useLocation()
      
     const [showSidebar, setShowSidebar] = useState(true);
-    const [categoryShow, setCategoryShow] = useState(true);
-     
-
     const [searchValue, setSearchValue] = useState('')
     const [category, setCategory] = useState('')
 
@@ -47,7 +42,7 @@ const Header = () => {
             dispatch(get_card_products(userInfo.id))
             dispatch(get_wishlist_products(userInfo.id))
         }  
-    },[userInfo])
+    },[dispatch, userInfo])
 
     return (
         <div className='w-full bg-white'>
@@ -102,7 +97,7 @@ const Header = () => {
             {/* Main Header */}
             <div className='w-full bg-white border-b border-slate-200'>
                 <div className='w-[85%] lg:w-[90%] mx-auto'>
-                    <div className='h-[80px] md-lg:h-[100px] flex justify-between items-center flex-wrap'>
+                    <div className='h-[80px] md-lg:h-auto md-lg:min-h-[68px] flex justify-between items-center flex-wrap'>
                         {/* Logo */}
                         <div className='md-lg:w-full w-3/12 md-lg:pt-4'>
                             <div className='flex justify-between items-center'>
@@ -112,8 +107,18 @@ const Header = () => {
                                     </div>
                                     <div className='text-xs font-semibold text-amber-600'>EXCLUSIVE</div>
                                 </Link>
-                                <div className='justify-center items-center w-[30px] h-[30px] bg-slate-100 text-slate-600 border border-slate-300 rounded-sm cursor-pointer lg:hidden md-lg:flex xl:hidden hidden hover:bg-slate-200 transition' onClick={() => setShowSidebar(false)}>
-                                    <span><FaList /></span>
+                                <div className='hidden md-lg:flex items-center gap-2'>
+                                    <Link to={userInfo ? '/dashboard/my-wishlist' : '/login'} aria-label='Wishlist' className='relative flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700'>
+                                        <FaHeart />
+                                        {wishlist_count > 0 && <span className='absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs text-white'>{wishlist_count}</span>}
+                                    </Link>
+                                    <button type='button' onClick={redirect_card_page} aria-label='Shopping cart' className='relative flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700'>
+                                        <FaCartShopping />
+                                        {card_product_count > 0 && <span className='absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs text-white'>{card_product_count}</span>}
+                                    </button>
+                                    <button type='button' onClick={() => setShowSidebar(false)} aria-label='Open navigation' className='flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-100'>
+                                        <FaList />
+                                    </button>
                                 </div>
                             </div> 
                         </div>
@@ -216,16 +221,31 @@ const Header = () => {
                 </div>
             </div>
 
+            <form onSubmit={(event) => { event.preventDefault(); search(); setShowSidebar(true); }} className='mobile-search hidden md-lg:flex w-[90%] mx-auto items-center gap-2 py-3'>
+                <input
+                    type='search'
+                    aria-label='Search products'
+                    placeholder='Search accessories...'
+                    value={searchValue}
+                    onChange={(event) => setSearchValue(event.target.value)}
+                    className='min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-amber-600'
+                />
+                <button type='submit' className='shrink-0 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white'>Search</button>
+            </form>
+
             {/* Mobile Sidebar */}
             <div className='hidden md-lg:block'>
-                <div onClick={() => setShowSidebar(true)} className={`fixed duration-200 transition-all ${showSidebar ? 'invisible' : 'visible'} hidden md-lg:block w-screen h-screen bg-[rgba(0,0,0,0.5)] top-0 left-0 z-20`}>  
+                <div onClick={() => setShowSidebar(true)} className={`fixed inset-0 z-20 bg-[rgba(0,0,0,0.5)] transition-opacity duration-200 ${showSidebar ? 'invisible opacity-0' : 'visible opacity-100'} hidden md-lg:block`}>  
                 </div> 
 
-                <div className={`w-[300px] z-[9999] transition-all duration-200 fixed ${showSidebar ? '-left-[300px]' : 'left-0 top-0'} overflow-y-auto bg-white h-screen py-6 px-8`}>
+                <div className={`fixed left-0 top-0 z-[9999] h-screen w-[min(300px,88vw)] overflow-y-auto bg-white px-6 py-6 shadow-xl transition-transform duration-200 ${showSidebar ? '-translate-x-full' : 'translate-x-0'}`}>
                     <div className='flex justify-start flex-col gap-6'>
-                        <Link to='/' className='text-2xl font-bold text-slate-900'>
-                            MamigloExclusive
-                        </Link>
+                        <div className='flex items-center justify-between gap-3'>
+                            <Link to='/' className='text-xl font-bold text-slate-900'>MamigloExclusive</Link>
+                            <button type='button' onClick={() => setShowSidebar(true)} aria-label='Close navigation' className='flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-700'>
+                                <FaTimes />
+                            </button>
+                        </div>
 
                         <div className='flex flex-col gap-4'>
                             <Link 

@@ -11,7 +11,7 @@ const About = () => {
             {/* Hero Section */}
             <section className='bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md-lg:py-12'>
                 <div className='w-[85%] lg:w-[90%] mx-auto'>
-                    <h1 className='text-5xl md-lg:text-4xl font-bold mb-4'>About MamigloExclusive</h1>
+                    <h1 className='break-words text-5xl md-lg:text-4xl sm:text-3xl font-bold mb-4'>About MamigloExclusive</h1>
                     <p className='text-xl text-slate-300 max-w-2xl'>
                         Crafting premium men's accessories for the modern Nigerian gentleman.
                     </p>

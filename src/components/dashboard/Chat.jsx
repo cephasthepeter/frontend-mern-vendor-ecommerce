@@ -81,9 +81,9 @@ const Chat = () => {
 
     return (
         <div className='bg-white p-3 rounded-md'>
-    <div className='w-full flex'>
+    <div className='relative flex min-w-0 w-full'>
         
-        <div className={`w-[230px] md-lg:absolute bg-white md-lg:h-full -left-[350px] ${show ? '-left-0' : '-left-[350px]'}`}>
+        <div className={`w-[230px] shrink-0 md-lg:absolute md-lg:top-0 md-lg:left-0 md-lg:z-20 md-lg:h-full md-lg:w-[min(230px,78vw)] md-lg:bg-white md-lg:shadow-lg ${show ? 'md-lg:translate-x-0' : 'md-lg:-translate-x-full'}`}>
             <div className='flex justify-center gap-3 items-center text-slate-600 text-xl h-[50px]'>
                 <span><AiOutlineMessage /></span>
                 <span>Message</span>
@@ -106,12 +106,12 @@ const Chat = () => {
             </div>
         </div>
 
-        <div className='w-[calc(100%-230px)] md-lg:w-full'>
+        <div className='min-w-0 flex-1 md-lg:w-full'>
             {
                 currentFd ? <div className='w-full h-full'>
                 <div className='flex justify-between gap-3 items-center text-slate-600 text-xl h-[50px]'>
            
-            <div className='flex gap-2'>
+            <div className='flex min-w-0 items-center gap-2'>
             <div className='w-[30px] h-[30px] rounded-full relative'>
             {
             activeSeller.some(c => c.sellerId === currentFd.fdId) && <div className='w-[10px] h-[10px] rounded-full bg-green-500 absolute right-0 bottom-0'></div>
@@ -127,7 +127,7 @@ const Chat = () => {
                 </div>      
                
                 </div>
-                <div className='h-[400px] w-full bg-slate-100 p-3 rounded-md'>
+                <div className='h-[min(60vh,400px)] min-h-[240px] w-full bg-slate-100 p-3 rounded-md'>
                     <div className='w-full h-full overflow-y-auto flex flex-col gap-3'>
 
         {

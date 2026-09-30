@@ -62,7 +62,7 @@ const Contact = () => {
                             </div>
                             <h3 className='text-xl font-bold text-slate-900 mb-2'>Email</h3>
                             <p className='text-slate-700 mb-4'>Send us an email anytime</p>
-                            <a href='mailto:hello@mamiglo.com' className='text-amber-600 font-semibold hover:text-amber-700'>
+                            <a href='mailto:hello@mamiglo.com' className='break-all text-amber-600 font-semibold hover:text-amber-700'>
                                 hello@mamiglo.com
                             </a>
                         </div>
@@ -74,7 +74,7 @@ const Contact = () => {
                             </div>
                             <h3 className='text-xl font-bold text-slate-900 mb-2'>Phone</h3>
                             <p className='text-slate-700 mb-4'>Call us during business hours</p>
-                            <a href='tel:+2348111609015' className='text-amber-600 font-semibold hover:text-amber-700'>
+                            <a href='tel:+2348111609015' className='break-all text-amber-600 font-semibold hover:text-amber-700'>
                                 +234 (0) 811 160 98015
                             </a>
                         </div>
@@ -270,7 +270,7 @@ const Contact = () => {
                         Stay updated with the latest collections, style tips, and exclusive offers
                     </p>
                     
-                    <div className='flex justify-center gap-6'>
+                    <div className='flex flex-wrap justify-center gap-4 sm:gap-3'>
                         <a
                             href='https://facebook.com'
                             target='_blank'

@@ -20,7 +20,7 @@ const Payment = () => {
             <Header />
             <section className='bg-[#eeeeee]'>
                 <div className='w-[85%] lg:w-[90%] md:w-[90%] sm:w-[90%] mx-auto py-16 mt-4 '>
-                    <div className='flex flex-wrap md:flex-col-reverse'>
+                    <div className='flex flex-wrap md:flex-col-reverse gap-y-5'>
                         <div className='w-7/12 md:w-full'>
                             <div className='pr-2 md:pr-0'>
                                 <div className='flex flex-wrap border border-slate-200 bg-white shadow-sm overflow-hidden'>
@@ -29,11 +29,11 @@ const Payment = () => {
                                             key={option.id}
                                             type='button'
                                             onClick={() => setPaymentMethod(option.id)}
-                                            className={`w-[33.33%] border-r last:border-r-0 cursor-pointer py-8 px-4 transition ${paymentMethod === option.id ? 'bg-white border-b-4 border-b-[#059473]' : 'bg-slate-100'}`}
+                                            className={`min-w-0 w-[33.33%] border-r last:border-r-0 cursor-pointer py-6 px-2 sm:px-1 transition ${paymentMethod === option.id ? 'bg-white border-b-4 border-b-[#059473]' : 'bg-slate-100'}`}
                                         >
                                             <div className='flex flex-col gap-[3px] justify-center items-center'>
                                                 <img src={option.image} alt={option.label} className='h-12 object-contain' />
-                                                <span className='mt-2 text-slate-700 font-medium'>{option.label}</span>
+                                                <span className='mt-2 break-words text-center text-sm text-slate-700 font-medium'>{option.label}</span>
                                             </div>
                                         </button>
                                     ))}

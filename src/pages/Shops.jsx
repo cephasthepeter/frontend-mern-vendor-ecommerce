@@ -195,10 +195,10 @@ const Shops = () => {
 
         <div className='w-9/12 md-lg:w-8/12 md:w-full'>
             <div className='pl-8 md:pl-0'>
-                <div className='py-4 bg-white mb-10 px-4 rounded-lg flex justify-between items-center border border-slate-200'>
+                <div className='py-4 bg-white mb-10 px-4 rounded-lg flex flex-wrap justify-between items-center gap-3 border border-slate-200'>
                     <h2 className='text-lg font-semibold text-slate-900'>{totalProduct} Products Found</h2>
-        <div className='flex justify-center items-center gap-4'>
-            <select onChange={(e)=>setSortPrice(e.target.value)} className='px-3 py-2 border border-slate-300 rounded-md outline-0 text-slate-700 font-medium hover:border-amber-600 focus:border-amber-600 transition'>
+        <div className='flex min-w-0 flex-wrap items-center gap-3'>
+            <select onChange={(e)=>setSortPrice(e.target.value)} className='w-full sm:w-auto px-3 py-2 border border-slate-300 rounded-md outline-0 text-slate-700 font-medium hover:border-amber-600 focus:border-amber-600 transition'>
                 <option value="">Sort By</option>
                 <option value="low-to-high">Price: Low to High</option>
                 <option value="high-to-low">Price: High to Low</option>

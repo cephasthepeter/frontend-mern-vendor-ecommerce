@@ -56,10 +56,10 @@ const Register = () => {
             }
 
             <Header/>
-            <div className='login-page min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4 py-10'>
-                <div className='w-full max-w-4xl mx-auto login-shell'>
-                    <div className='grid grid-cols-1 lg:grid-cols-[40%_60%] overflow-hidden rounded-[28px] border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_25px_80px_rgba(15,23,42,0.45)]'>
-                        <div className='px-6 py-8 sm:px-8 lg:px-10 lg:py-10 login-form'>
+            <div className='login-page min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-3 py-8'>
+                <div className='w-full max-w-5xl mx-auto login-shell'>
+                    <div className='auth-layout overflow-hidden rounded-[28px] border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_25px_80px_rgba(15,23,42,0.45)]'>
+                        <div className='px-6 py-8 sm:px-8 lg:px-10 lg:py-10 auth-form login-form'>
                             <div className='login-card bg-slate-900/20 border border-white/10 rounded-2xl p-6 backdrop-blur-md'>
                                 <h2 className='text-center w-full text-3xl text-white font-bold mb-6'>Register</h2>
 
@@ -104,7 +104,7 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className='relative min-h-[420px] w-full'>
+                        <div className='auth-visual relative min-h-[420px] w-full'>
                             <img src="http://localhost:3000/images/login.jpg" alt="" className='h-full w-full object-cover grayscale-[0.15]' />
                             <div className='absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent'></div>
                             <div className='absolute inset-x-0 bottom-0 p-8 text-white'>
